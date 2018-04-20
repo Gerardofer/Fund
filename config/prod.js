@@ -5,6 +5,3 @@ module.exports = {
   mongoURI: process.env.MONGO_URI,
   cookieKey: process.env.COOKIE_KEY
 };
-
-
-mongodb://gerardofer13:S3b4st14n0322@ds251849.mlab.com:51849/sevafund
