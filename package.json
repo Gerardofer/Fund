@@ -1,0 +1,26 @@
+{
+  "name": "fund",
+  "version": "1.0.0",
+  "description": "alternate to our fund",
+  "main": "index.js",
+  "engines": {
+    "node": "9.11.1",
+    "npm": "5.6.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gerardofer/Fund.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gerardofer/Fund/issues"
+  },
+  "homepage": "https://github.com/Gerardofer/Fund#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
