@@ -23,17 +23,15 @@ passport.use(
       callbackURL: "/auth/google/callback",
       proxy: true
     },
-    (accessToken, refreshToken, profile, done) => {
-      Donor.findOne({ googleId: profile.id }).then(existingDonor => {
-        if (existingDonor) {
-          //no need to create a new record
-          done(null, existingDonor);
-        } else {
-          new Donor({ googleId: profile.id })
-            .save()
-            .then(Donor => done(null, Donor));
-        }
-      });
+    async (accessToken, refreshToken, profile, done) => {
+      const existingDonor = await Donor.findOne({ googleId: profile.id });
+
+      if (existingDonor) {
+        return done(null, existingDonor);
+      }
+
+      const Donor = await new Donor({ googleId: profile.id }).save();
+      done(null, Donor);
     }
   )
 );
