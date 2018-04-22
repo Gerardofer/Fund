@@ -9,7 +9,7 @@ const Sevafund = () => <h2>Sevafund</h2>;
 
 const App = () => {
   return (
-    <div>
+    <div className="container">
       <Router>
         <div>
           <Header />
