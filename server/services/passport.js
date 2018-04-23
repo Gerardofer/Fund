@@ -5,13 +5,15 @@ const keys = require("../config/keys");
 
 const Donor = mongoose.model("Donor");
 
-passport.serializeUser((user, done) => {
+passport.serializeUser((donor, done) => {
+  console.log("serialize user:", donor);
   done(null, donor.id);
 });
 
 passport.deserializeUser((id, done) => {
-  Donor.findById(id).then(user => {
-    done(null, user);
+  Donor.findById(id).then(donor => {
+    console.log("DE-serializeuser:", donor);
+    done(null, donor);
   });
 });
 
@@ -24,15 +26,17 @@ passport.use(
       proxy: true
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log(accessToken);
-      console.log(profile);
       const existingDonor = await Donor.findOne({ googleId: profile.id });
 
       if (existingDonor) {
+        console.log("User already in Database");
         return done(null, existingDonor);
       }
 
-      const donor = await new Donor({ googleId: profile.id }).save();
+      const donor = await new Donor(
+        { googleId: profile.id },
+        console.log("New Donor", donor)
+      ).save();
       done(null, donor);
     }
   )

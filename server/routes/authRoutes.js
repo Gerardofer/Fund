@@ -18,10 +18,12 @@ module.exports = app => {
 
   app.get("/api/logout", (req, res) => {
     req.logout();
-    res.send(req.donors);
+    res.send(req.donor);
   });
 
   app.get("/api/current_donor", (req, res) => {
-    res.send(req.donors);
+    console.log("Here I am!!!");
+    console.log(req.donors);
+    res.send(req.donor);
   });
 };
