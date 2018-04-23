@@ -20,9 +20,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-const PORT = process.env.PORT || 5000;
-
 require("./routes/authRoutes")(app);
+
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`Port on ${PORT}`);

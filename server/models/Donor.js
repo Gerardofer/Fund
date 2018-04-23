@@ -2,11 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const DonorSchema = new Schema({
-  googleId: String,
-  Password: {
-    type: String
-  },
-  Email: {
+  googleId: {
     type: String
   },
   PurchaseOrders: {
