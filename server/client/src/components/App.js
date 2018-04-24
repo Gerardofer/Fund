@@ -4,10 +4,10 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 
 import Header from "./Header";
+import Sevafund from "./SevaFund";
 
 const Projects = () => <h2>Projects</h2>;
 const ProjectNew = () => <h2>New Project</h2>;
-const Sevafund = () => <h2>Sevafund</h2>;
 
 class App extends Component {
   componentDidMount() {
