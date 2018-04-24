@@ -1,19 +1,17 @@
 const passport = require("passport");
+const keys = require("../config/keys");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const mongoose = require("mongoose");
-const keys = require("../config/keys");
 
-const Donor = mongoose.model("Donor");
+const User = mongoose.model("users");
 
-passport.serializeUser((donor, done) => {
-  console.log("serialize user:", donor);
-  done(null, donor.id);
+passport.serializeUser((user, done) => {
+  done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
-  Donor.findById(id).then(donor => {
-    console.log("DE-serializeuser:", donor);
-    done(null, donor);
+  User.findById(id).then(user => {
+    done(null, user);
   });
 });
 
@@ -26,18 +24,15 @@ passport.use(
       proxy: true
     },
     async (accessToken, refreshToken, profile, done) => {
-      const existingDonor = await Donor.findOne({ googleId: profile.id });
+      const existingUser = await User.findOne({ googleId: profile.id });
 
-      if (existingDonor) {
-        console.log("User already in Database");
-        return done(null, existingDonor);
+      if (existingUser) {
+        console.log("User already in Database", existingUser);
+        return done(null, existingUser);
       }
 
-      const donor = await new Donor(
-        { googleId: profile.id },
-        console.log("New Donor", donor)
-      ).save();
-      done(null, donor);
+      const user = await new User({ googleId: profile.id }).save();
+      done(null, user);
     }
   )
 );

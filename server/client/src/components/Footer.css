@@ -1,0 +1,12 @@
+footer {
+  margin-top: 100px;
+}
+
+div h4,
+div p {
+  color: black;
+}
+
+div.container {
+  color: black;
+}

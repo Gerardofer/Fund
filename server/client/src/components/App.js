@@ -5,6 +5,7 @@ import * as actions from "../actions";
 
 import Header from "./Header";
 import Sevafund from "./SevaFund";
+import Footer from "./Footer";
 
 const Projects = () => <h2>Projects</h2>;
 const ProjectNew = () => <h2>New Project</h2>;
@@ -23,6 +24,7 @@ class App extends Component {
             <Route exact path="/" component={Sevafund} />
             <Route exact path="/projects" component={Projects} />
             <Route path="/project/new" component={ProjectNew} />
+            <Footer />
           </div>
         </Router>
       </div>

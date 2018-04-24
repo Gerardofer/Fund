@@ -10,13 +10,17 @@ class Header extends Component {
       case false:
         return (
           <li>
-            <a href="/auth/google">Login with Google</a>
+            <a style={{ color: "black" }} href="/auth/google">
+              Login with Google
+            </a>
           </li>
         );
       default:
         return (
           <li>
-            <a href="/api/logout">Logout</a>
+            <a style={{ color: "black" }} href="/api/logout">
+              Logout
+            </a>
           </li>
         );
     }
@@ -26,10 +30,11 @@ class Header extends Component {
     return (
       <div>
         <nav>
-          <div className="nav-wrapper amber accent-4">
+          <div className="nav-wrapper grey lighten-4">
             <Link
               to={this.props.auth ? "/projects" : "/"}
               className="left brand-logo"
+              style={{ color: "black" }}
             >
               SevaFund
             </Link>
