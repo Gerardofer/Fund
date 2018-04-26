@@ -4,15 +4,11 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
   googleId: {
     type: String
+  },
+  credits: {
+    type: Number,
+    default: 0
   }
-  // PurchaseOrders: {
-  //   type: Array,
-  //   default: []
-  // },
-  // Don_eth_address: {
-  //   type: String,
-  //   default: ""
-  // }
 });
 
 mongoose.model("users", userSchema);
